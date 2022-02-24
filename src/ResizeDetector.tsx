@@ -4,6 +4,8 @@ import { findDOMNode } from 'react-dom';
 
 import { patchResizeHandler, isFunction, isSSR, isDOMElement, createNotifier } from './utils';
 
+import ResizeObserver from 'resize-observer-polyfill';
+
 export interface ReactResizeDetectorDimensions {
   height?: number;
   width?: number;
@@ -131,7 +133,9 @@ class ResizeDetector<ElementT extends HTMLElement = HTMLElement> extends PureCom
     }
 
     this.resizeHandler = patchResizeHandler(this.createResizeHandler, refreshMode, refreshRate, refreshOptions);
-    this.resizeObserver = new window.ResizeObserver(this.resizeHandler);
+    this.resizeObserver = window.ResizeObserver
+          ? new window.ResizeObserver(this.resizeHandler)
+          : new ResizeObserver(this.resizeHandler)
   }
 
   componentDidMount(): void {

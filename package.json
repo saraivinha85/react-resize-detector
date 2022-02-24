@@ -38,6 +38,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
+    "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.0",
     "rollup": "^2.61.1",
     "rollup-plugin-copy": "^3.4.0",
